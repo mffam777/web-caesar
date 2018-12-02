@@ -68,8 +68,8 @@ form = """
 
 def caesar():
 
-    rot = request.form['rot']
-    return '<h1>Encryp, ' + rot + '</h1>'
+    text = request.form['text']
+    return '<h1>Encryp, ' + text + '</h1>'
 
 
 def index(): 
