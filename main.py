@@ -1,4 +1,4 @@
-from flask import Flask 
+from flask import Flask, request
 # from flask import Flask: this imports 
 # the Flask class from the flask module.
 
@@ -32,11 +32,11 @@ form = """
             border-radius: 10px;
         }
     
-        textarea {
+        textarea {{
             margin: 10px 0;
             width: 540px;
             height: 120px;
-        }
+        }}
     
         p.error {
             color: red;
