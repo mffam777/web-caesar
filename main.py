@@ -18,20 +18,20 @@ app.config['DEBUG'] = True
 # running (aka "host swapping")
 
 
-# enclose the form string in triple-quotes """ so it can take up multiple lines.
+# HTML forms string enclosed in triple-quotes """ so it can take up multiple lines.
 form = """
 <!doctype html>
 <html>
     <head>
         <style>
-        form {
+        form {{
             background-color: #eee;
             padding: 20px;
             margin: 0 auto;
             width: 540px;
             font: 16px sans-serif;
             border-radius: 10px;
-        }
+        }}
     
         textarea {{
             margin: 10px 0;
@@ -39,44 +39,44 @@ form = """
             height: 120px;
         }}
     
-        p.error {
+        p.error {{
             color: red;
-        }
+        }}
     </style>
     </head>
 
     <body>
-        <form action="/caesar" method="post">
-            <div>
-                <label for="rot">Rotate by:</label>
-                <input id="rot" type="text" name="rotate_by" value="0">
-                <p class="error"></p>
-            </div>
-                <textarea type="text" name="text"></textarea>
-                    <br>
-                        <input type="submit">
-        </form>
+
+    <!-- create your form here -->
+      <form method = "POST">
+
+        <label>Rotate by:<input name="rot" type="text"/></label>
+        <label><textarea name="text">{encrypt_text}</textarea></label>
+        <input type="submit" value="Submit Query">
+
+      </form>
+
     </body>
 </html>
+
 """
 
-@app.route("/") 
-# this is a decorator that creates a mapping between 
-# the path - in this case the root, or "/", and the function that 
-# we're about to 
-@app.route("/caesar", methods=['POST'])
-
-def caesar():
-
-    rotate_by = request.form['rotate_by']
-    return '<h1>Encryp, ' + rotate_by + '</h1>'
+# Create your route
 
 
-def index(): 
-#We define index, a function of zero variables
+@app.route("/")
+def index():
+    return form.format(encrypt_text="")
 
-    return form
-    # Our function returns a string literal.
+
+@app.route("/", methods=['POST'])
+def encrypt():
+    rot = int(request.form['rot'])
+    text = request.form['text']
+
+    encryption_string = rotate_string(text, rot)
+
+    return form.format(encrypt_text=encryption_string)
 
 
 app.run() 
