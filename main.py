@@ -21,7 +21,7 @@ app.config['DEBUG'] = True
 def index(): 
 #We define index, a function of zero variables
 
-    return "Hello World" 
+    return forms
     # Our function returns a string literal.
 
 
