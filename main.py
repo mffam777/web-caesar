@@ -14,7 +14,7 @@ app.config['DEBUG'] = True
 # running (aka "host swapping")
 
 
-# triple """ to input html stream
+# enclose the form string in triple-quotes """ so it can take up multiple lines.
 form = """
 <!doctype html>
 <html>
@@ -40,7 +40,7 @@ form = """
         }
     </style>
     </head>
-    
+
     <body>
         <form method="post">
             <div>
