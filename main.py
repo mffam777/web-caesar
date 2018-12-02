@@ -5,7 +5,8 @@ from flask import Flask, request
 from caesar import rotate_string
 # import function from caesar.py
 
-app = Flaks(__name__) # app will be the object created by the 
+app = Flask(__name__) 
+# app will be the object created by the 
 # constructor Flask. __name__ is a variable controlled by Python 
 # that tells code what module it's in.
 
@@ -45,7 +46,7 @@ form = """
     </head>
 
     <body>
-        <form method="post">
+        <form action="/caesar" method="post">
             <div>
                 <label for="rot">Rotate by:</label>
                 <input type="text" name="rot" value="0">
@@ -62,7 +63,14 @@ form = """
 @app.route("/") 
 # this is a decorator that creates a mapping between 
 # the path - in this case the root, or "/", and the function that 
-# we're about to define
+# we're about to 
+@app.route("/caesar", methods=['POST'])
+
+def caesar():
+
+    rot = request.form['rot']
+    return '<h1>Encryp, ' + rot + '</h1>'
+
 
 def index(): 
 #We define index, a function of zero variables
