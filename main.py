@@ -63,12 +63,12 @@ form = """
 
 # Create your route
 
-
+# function, return the form variable
 @app.route("/")
 def index():
     return form.format(encrypt_text="")
 
-
+# This decorator function receive requests at the root path
 @app.route("/", methods=['POST'])
 def encrypt():
     rot = int(request.form['rot'])
