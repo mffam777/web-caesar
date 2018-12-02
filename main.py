@@ -49,7 +49,7 @@ form = """
         <form action="/caesar" method="post">
             <div>
                 <label for="rot">Rotate by:</label>
-                <input type="text" name="rot" value="0">
+                <input id="rot" type="text" name="rotate_by" value="0">
                 <p class="error"></p>
             </div>
                 <textarea type="text" name="text"></textarea>
@@ -68,8 +68,8 @@ form = """
 
 def caesar():
 
-    text = request.form['text']
-    return '<h1>Encryp, ' + text + '</h1>'
+    rotate_by = request.form['rotate_by']
+    return '<h1>Encryp, ' + rotate_by + '</h1>'
 
 
 def index(): 
