@@ -2,6 +2,9 @@ from flask import Flask
 # from flask import Flask: this imports 
 # the Flask class from the flask module.
 
+from caesar import rotate_string
+# import function from caesar.py
+
 app = Flaks(__name__) # app will be the object created by the 
 # constructor Flask. __name__ is a variable controlled by Python 
 # that tells code what module it's in.
