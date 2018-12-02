@@ -13,6 +13,26 @@ app.config['DEBUG'] = True
 # and ensuring file changes are reloaded while the server is 
 # running (aka "host swapping")
 
+
+# triple """ to input html stream
+form = """
+<!doctype html>
+<html>
+    <body>
+        <form method="post">
+            <div>
+                <label for="rot">Rotate by:</label>
+                <input type="text" name="rot" value="0">
+                <p class="error"></p>
+            </div>
+                <textarea type="text" name="text"></textarea>
+                    <br>
+                        <input type="submit">
+        </form>
+    </body>
+</html>
+"""
+
 @app.route("/") 
 # this is a decorator that creates a mapping between 
 # the path - in this case the root, or "/", and the function that 
@@ -21,7 +41,7 @@ app.config['DEBUG'] = True
 def index(): 
 #We define index, a function of zero variables
 
-    return forms
+    return form
     # Our function returns a string literal.
 
 
